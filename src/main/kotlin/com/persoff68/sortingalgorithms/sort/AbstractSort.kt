@@ -9,7 +9,7 @@ abstract class AbstractSort : Sort {
         val str = if (printResult) {
             "${this.getName()} (${time}ms): ${result.contentToString()}"
         } else {
-            "${this.getName()} (${time}ms)"
+            "${this.getName()}: ${time}ms"
         }
         println(str)
     }
