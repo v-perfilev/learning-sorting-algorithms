@@ -6,27 +6,33 @@ import com.persoff68.sortingalgorithms.sort.InsertionSort
 import com.persoff68.sortingalgorithms.sort.MergeSort
 import com.persoff68.sortingalgorithms.sort.QuickSort
 import com.persoff68.sortingalgorithms.sort.SelectionSort
+import com.persoff68.sortingalgorithms.sort.ShellSort
 import com.persoff68.sortingalgorithms.util.ArrayUtil
 
 fun main() {
-    val arr = ArrayUtil.generate(10000)
+    val arr = ArrayUtil.generate(10)
+
+    val comp = Comparator(Integer::compare)
 
     // Bubble sort
-    BubbleSort().apply(arr)
+    BubbleSort(comp).apply(arr)
 
     // Selection sort
-    SelectionSort().apply(arr)
+    SelectionSort(comp).apply(arr)
 
     // Insertion sort
-    InsertionSort().apply(arr)
+    InsertionSort(comp).apply(arr)
 
     // Merge sort
-    MergeSort().apply(arr)
+    MergeSort(comp).apply(arr)
 
     // Quick sort
-    QuickSort().apply(arr)
+    QuickSort(comp).apply(arr)
 
     // Heap sort
-    HeapSort().apply(arr)
+    HeapSort(comp).apply(arr)
+
+    // Shell sort
+    ShellSort(comp).apply(arr)
 }
 

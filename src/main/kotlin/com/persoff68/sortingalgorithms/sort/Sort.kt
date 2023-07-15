@@ -1,6 +1,6 @@
 package com.persoff68.sortingalgorithms.sort
 
-interface Sort {
+interface Sort<T : Comparable<T>> {
     fun getName(): String
-    fun sort(inputArr: IntArray): IntArray
+    fun sort(inputArr: Array<T>): Array<T>
 }

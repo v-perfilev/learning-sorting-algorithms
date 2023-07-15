@@ -1,9 +1,9 @@
 package com.persoff68.sortingalgorithms.sort
 
-class MergeSort : AbstractSort() {
+class MergeSort<T : Comparable<T>>(comparator: Comparator<T>) : AbstractSort<T>(comparator) {
     override fun getName(): String = "Merge sort"
 
-    override fun sort(inputArr: IntArray): IntArray {
+    override fun sort(inputArr: Array<T>): Array<T> {
         val arr = inputArr.copyOf()
 
         mergeSort(arr, 0, arr.size - 1)
@@ -11,7 +11,7 @@ class MergeSort : AbstractSort() {
         return arr
     }
 
-    private fun mergeSort(arr: IntArray, l: Int, r: Int) {
+    private fun mergeSort(arr: Array<T>, l: Int, r: Int) {
         if (l < r) {
             val m = (l + r) / 2
             mergeSort(arr, l, m)
@@ -20,25 +20,19 @@ class MergeSort : AbstractSort() {
         }
     }
 
-    private fun merge(arr: IntArray, l: Int, m: Int, r: Int) {
+    private fun merge(arr: Array<T>, l: Int, m: Int, r: Int) {
         val n1 = m - l + 1
         val n2 = r - m
-        val lArr = IntArray(n1)
-        val rArr = IntArray(n2)
 
-        for (i in 0 until n1) {
-            lArr[i] = arr[l + i]
-        }
-        for (i in 0 until n2) {
-            rArr[i] = arr[m + 1 + i]
-        }
+        val lArr = List(n1) { arr[l + it] }
+        val rArr = List(n2) { arr[m + 1 + it] }
 
         var i = 0
         var j = 0
         var k = l
 
         while (i < n1 && j < n2) {
-            if (lArr[i] <= rArr[j]) {
+            if (comparator.compare(lArr[i], rArr[j]) <= 0) {
                 arr[k] = lArr[i]
                 i++
             } else {
