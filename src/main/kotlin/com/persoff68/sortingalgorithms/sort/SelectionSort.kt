@@ -2,7 +2,7 @@ package com.persoff68.sortingalgorithms.sort
 
 import com.persoff68.sortingalgorithms.util.ArrayUtil
 
-class SelectionSort : Sort {
+class SelectionSort : AbstractSort() {
     override fun getName(): String = "Selection sort"
 
     override fun sort(inputArr: IntArray): IntArray {

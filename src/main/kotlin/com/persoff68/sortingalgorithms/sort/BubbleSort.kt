@@ -2,7 +2,7 @@ package com.persoff68.sortingalgorithms.sort
 
 import com.persoff68.sortingalgorithms.util.ArrayUtil
 
-class BubbleSort : Sort {
+class BubbleSort : AbstractSort() {
     override fun getName(): String = "Bubble sort"
 
     override fun sort(inputArr: IntArray): IntArray {
